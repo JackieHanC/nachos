@@ -39,6 +39,7 @@
 
 #include "copyright.h"
 #include "utility.h"
+class message;
 
 #ifdef USER_PROGRAM
 #include "machine.h"
@@ -66,6 +67,9 @@ class Thread;
 
 extern int t_ids[128]; // limited thread numbers
 extern Thread * tid_pointer[128];
+
+
+
 
 
 // The following class defines a "thread control block" -- which
@@ -138,6 +142,8 @@ class Thread {
 
     int static assign_t_id();
 
+    message * msgQueue;
+
   private:
     // some of the private data for this class is listed above
     
@@ -178,5 +184,6 @@ void ThreadRoot();
 // Stop running oldThread and start running newThread
 void SWITCH(Thread *oldThread, Thread *newThread);
 }
+
 
 #endif // THREAD_H

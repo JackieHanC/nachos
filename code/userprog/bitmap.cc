@@ -62,7 +62,7 @@ BitMap::Clear(int which, bool show)
 {
     ASSERT(which >= 0 && which < numBits);
     if (show)
-        printf("De-allocate physical page %d\n",which);
+        // printf("De-allocate physical page %d\n",which);
     map[which / BitsInWord] &= ~(1 << (which % BitsInWord));
 }
 
@@ -99,7 +99,7 @@ BitMap::Find()
     for (int i = 0; i < numBits; i++)
 	if (!Test(i)) {
 	    Mark(i);
-        printf("allocate sector %d\n",i);
+        // printf("allocate sector %d\n",i);
 	    return i;
 	}
     return -1;

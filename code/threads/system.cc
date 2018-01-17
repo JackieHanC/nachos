@@ -20,6 +20,7 @@ Statistics *stats;			// performance metrics
 Timer *timer;				// the hardware timer device,
 					// for invoking context switches
 Lock * lock;
+message_buffer msg_buffer(10);
 
 #ifdef FILESYS_NEEDED
 FileSystem  *fileSystem;
@@ -196,7 +197,6 @@ Initialize(int argc, char **argv)
 
 #ifdef FILESYS_NEEDED
     fileSystem = new FileSystem(format);
-    printf("outof fileSystem\n");
 #endif
 
 #ifdef NETWORK

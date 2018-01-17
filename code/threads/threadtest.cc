@@ -15,7 +15,7 @@
 
 
 // testnum is set in main.cc
-int testnum = 3;
+int testnum = 1;
 
 //extern static Thread* Thread::getInstance(char * threadName);
 
@@ -298,6 +298,22 @@ int testnum = 3;
 //     thread[2]->Fork(testBaraier,(void*)2);
 //     thread[3]->Fork(testBaraier,(void*)3);
 // }
+
+void sendMsg(int which) {
+    printf("sending message...\n");
+    msg_buffer.send(currentThread, which, "this is a msg.");
+}
+void receiveMsg(int which) {
+    char *target;
+    msg_buffer.receive(target);
+    printf("Msg received: %s\n", target);
+}
+void testMsg() {
+    Thread * thread1 = Thread::getInstance("thread 1", 0);
+    Thread * thread2 = Thread::getInstance("thread 2", 0);
+    thread1->Fork(sendMsg, (void*)thread2->getT_id());
+    thread2->Fork(receiveMsg, (void*)0);
+}
 //----------------------------------------------------------------------
 // ThreadTest
 // 	Invoke a test routine.
@@ -309,6 +325,7 @@ ThreadTest()
     switch (testnum) {
     case 1:
 //	    ThreadTestP_C();
+        testMsg();
 	    break;
     case 2:
   //      ThreadTestP_C_cond();

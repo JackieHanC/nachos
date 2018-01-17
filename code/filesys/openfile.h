@@ -52,6 +52,7 @@ public:
     }
 
     int Length() { Lseek(file, 0, 2); return Tell(file); }
+
     
 private:
     int file;

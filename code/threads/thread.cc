@@ -49,6 +49,7 @@ Thread::Thread(char* threadName)
     this->useTime = 0;
     this->TimeNeed = 0;
 
+    this->msgQueue = NULL;
 
     stackTop = NULL;
     stack = NULL;

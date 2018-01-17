@@ -152,6 +152,8 @@ class Machine {
     void LRUInsert(int which);
     int LRUFind();
 
+    void PC_advance();
+
 // Data structures -- all of these are accessible to Nachos kernel code.
 // "public" for convenience.
 //

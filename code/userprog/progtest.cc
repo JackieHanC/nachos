@@ -65,17 +65,17 @@ StartProcess(char *filename)
     
     
 
-    Thread *thread = Thread::getInstance("new thread", 0);
+    // Thread *thread = Thread::getInstance("new thread", 0);
     
 
-    thread->Fork(testFunc,(void*)filename);
+    // thread->Fork(testFunc,(void*)filename);
     
 
     space->InitRegisters();     // set the initial register values
     space->RestoreState();      // load page table register
     
-    currentThread->Yield();
-    printf("This is main thread\n");
+    // currentThread->Yield();
+    // printf("This is main thread\n");
 
     machine->Run();		// jump to the user progam
     ASSERT(FALSE);			// machine->Run never returns;
